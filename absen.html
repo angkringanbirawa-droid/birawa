@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Absen Angkringan Birawa</title>
+  <style>
+    body {
+      background: #fff3e0;
+      font-family: Arial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 320px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      color: #ff5722;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #ff5722;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #e64a19;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Absen & Omzet</h2>
+
+  <form action="kirim.php" method="POST">
+    <input type="text" name="nama" placeholder="Nama" required>
+
+    <label>Tanggal</label>
+    <input type="date" name="tanggal" id="tanggal" required>
+
+    <label>Hari</label>
+    <input type="text" name="hari" id="hari" readonly>
+
+    <label>Omzet (Rp)</label>
+    <input type="number" name="omzet" placeholder="Contoh: 500000" required>
+
+    <button type="submit">Kirim Laporan</button>
+  </form>
+</div>
+
+<script>
+document.getElementById("tanggal").addEventListener("change", function () {
+  const hari = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+  const tgl = new Date(this.value);
+  document.getElementById("hari").value = hari[tgl.getDay()];
+});
+</script>
+
+</body>
+</html>
